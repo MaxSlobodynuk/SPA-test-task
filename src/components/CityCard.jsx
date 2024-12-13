@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchWeatherData } from '../slices/weatherSlice';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, Typography, Button, Box } from '@mui/material';
+import { removeCity } from '../slices/citiesSlice';
 
 const CityCard = ({ city }) => {
   const dispatch = useDispatch();
@@ -35,6 +36,14 @@ const CityCard = ({ city }) => {
           to={`/${city}`}
         >
           Details
+        </Button>
+        <Button
+          variant="text"
+          color="error"
+          size="small"
+          onClick={() => dispatch(removeCity(city))} 
+        >
+          Delete
         </Button>
       </Box>
     </Card>
